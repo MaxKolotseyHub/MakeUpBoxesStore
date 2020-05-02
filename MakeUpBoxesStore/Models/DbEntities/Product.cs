@@ -12,6 +12,7 @@ namespace MakeUpBoxesStore.Models.DbEntities
         public Product()
         {
             Images = new List<Image>();
+            Categories = new List<Category>();
         }
         public int Id { get; set; }
         [Display(Name = "Название")]
@@ -28,8 +29,7 @@ namespace MakeUpBoxesStore.Models.DbEntities
         public string Description { get; set; }
         public int ProducerId { get; set; }
         public virtual Producer Producer { get; set; }
-        public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual List<Category> Categories { get; set; }
         public virtual List<Image> Images { get; set; }
     }
 }

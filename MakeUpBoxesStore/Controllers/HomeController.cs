@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MakeUpBoxesStore.Db;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,10 @@ namespace MakeUpBoxesStore.Controllers
     {
         public ActionResult Index()
         {
+            using(MyDbContext db = new MyDbContext())
+            {
+                var products = db.Products.ToList();
+            }
             return View();
         }
 
