@@ -57,3 +57,4 @@ namespace MakeUpBoxesStore.Db
             base.Seed(context);
         }
     }
+}

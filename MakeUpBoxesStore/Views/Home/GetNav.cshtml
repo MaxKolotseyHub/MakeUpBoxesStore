@@ -1,0 +1,28 @@
+﻿<ul class="nav flex-column  bg-light sidenav">
+    <li>
+        <a class="d-flex justify-content-between align-items-center nav-link" href="#boxes" data-toggle="collapse" aria-controls="boxes" aria-expanded="false" role="button">
+            Боксы
+            <span class="badge badge-primary badge-pill">@ViewBag.Boxes.Count</span>
+        </a>
+        <hr />
+
+    </li>
+    <li id="boxes" class="collapse">
+
+        <ul>
+            @foreach (var box in ViewBag.Boxes as List<MakeUpBoxesStore.Models.DbEntities.Box>)
+            {
+                <li class="nav-item">
+                    @Html.ActionLink(box.Title, "Index", "Category", routeValues: new { id = box.Id }, htmlAttributes: new { @class = "" })
+                </li>
+            }
+        </ul>
+
+    </li>
+    @foreach (var category in ViewBag.Categories as List<MakeUpBoxesStore.Models.DbEntities.Category>)
+    {
+        <li class="nav-item">
+            @Html.ActionLink(category.Title, "Index", "Category", routeValues: new { id = category.Id }, htmlAttributes: new { @class = "nav-link" })
+        </li>
+    }
+</ul>

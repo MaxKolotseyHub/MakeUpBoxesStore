@@ -11,25 +11,16 @@ namespace MakeUpBoxesStore.Controllers
     {
         public ActionResult Index()
         {
-            using(MyDbContext db = new MyDbContext())
+            return View();
+        }
+        public ActionResult GetNav()
+        {
+            using (MyDbContext db = new MyDbContext())
             {
-                var products = db.Products.ToList();
+                ViewBag.Categories = db.Categories.ToList();
+                ViewBag.Boxes = db.Boxes.ToList();
             }
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+                return PartialView();
         }
     }
 }
