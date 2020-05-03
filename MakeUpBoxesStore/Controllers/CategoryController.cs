@@ -18,6 +18,9 @@ namespace MakeUpBoxesStore.Controllers
         // GET: Category
         public ActionResult Index(int id)
         {
+            if(id==0)
+            return View(db.Products.ToList());
+            else
             return View(db.Categories.FirstOrDefault(x => x.Id == id).Products.ToList());
         }
     }

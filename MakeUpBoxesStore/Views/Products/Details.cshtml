@@ -1,0 +1,97 @@
+﻿@model MakeUpBoxesStore.Models.ViewModels.ProductDetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <div class="container">
+        <br/>
+        <div class="row">
+            <div class="col-lg-5">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        @{ int counter = 0;
+                            string activeClass = "active";}
+                        @foreach (var image in @Model.Images)
+                        {
+                            <li data-target="#carouselExampleIndicators" data-slide-to="@counter" class="@activeClass"></li>
+
+                            counter++;
+                            if (counter != 0)
+                            {
+                                activeClass = "";
+                            }
+
+                        }
+                    </ol>
+                    @{
+                        counter = 0;
+                        activeClass = "active";
+                    }
+                    <div class="carousel-inner">
+                        @foreach (var image in @Model.Images)
+                        {
+
+                            <div class="carousel-item @activeClass" style="height:80%">
+                                <img class="d-block"
+                                     src="@image">
+                            </div>
+                            counter++;
+                            if (counter != 0)
+                            {
+                                activeClass = "";
+                            }
+
+                        }
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Count)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Count)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Price)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProducerInfo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ProducerInfo)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

@@ -173,16 +173,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BoxesController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Db\AppDbInitializer.cs" />
     <Compile Include="Db\MyDbContext.cs" />
     <Compile Include="Db\MyDbContextInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AutoMapperConfig.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Box.cs" />
+    <Compile Include="Models\BoxesCart.cs" />
     <Compile Include="Models\DbEntities\Box.cs" />
     <Compile Include="Models\DbEntities\Category.cs" />
     <Compile Include="Models\DbEntities\Client.cs" />
@@ -191,6 +196,7 @@
     <Compile Include="Models\DbEntities\Product.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\ProductDetailsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -202,6 +208,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\myGrid.css" />
+    <Content Include="Content\MyStyles.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -355,11 +362,12 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\GetNav.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Boxes\Create.cshtml" />
+    <Content Include="Views\Boxes\Index.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Models\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

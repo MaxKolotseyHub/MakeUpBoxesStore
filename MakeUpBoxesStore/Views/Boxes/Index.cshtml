@@ -1,0 +1,40 @@
+﻿@model MakeUpBoxesStore.Models.Box
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>Box</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dd>
+            <table>
+                <tr>
+                    <th>Название</th>
+                    <th>Количество</th>
+                </tr>
+                <tr>
+                    @foreach (var prod in ViewBag.Products as List<MakeUpBoxesStore.Models.DbEntities.Product>)
+                    {
+                        <th>@prod.Title</th>
+                        <th>@</th>
+                    }
+                </tr>
+            </table>
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

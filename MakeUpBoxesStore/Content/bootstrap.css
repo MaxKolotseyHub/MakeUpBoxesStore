@@ -6696,6 +6696,10 @@ a.close.disabled {
   background-color: #007bff !important;
 }
 
+.bg-lightPurple {
+    background-color: #A9CCE3 !important;
+}
+
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {

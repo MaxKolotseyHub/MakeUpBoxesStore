@@ -1,4 +1,5 @@
 ﻿using MakeUpBoxesStore.Db;
+using MakeUpBoxesStore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,20 @@ namespace MakeUpBoxesStore.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly MyDbContext db;
+        public HomeController()
+        {
+            db = new MyDbContext();
+        }
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index","Category", new { id=0});
         }
         public ActionResult GetNav()
         {
-            using (MyDbContext db = new MyDbContext())
-            {
-                ViewBag.Categories = db.Categories.ToList();
-                ViewBag.Boxes = db.Boxes.ToList();
-            }
-                return PartialView();
+            ViewBag.Categories = db.Categories.ToList();
+            ViewBag.Boxes = BoxesCart.GetInstance().Boxes;
+            return PartialView();
         }
     }
 }
