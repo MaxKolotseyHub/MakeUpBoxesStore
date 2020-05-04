@@ -19,10 +19,7 @@ namespace MakeUpBoxesStore.Controllers
         [HttpGet]
         public ActionResult Index(int id)
         {
-            var box = BoxesCart.GetInstance().Boxes.FirstOrDefault(x => x.Id == id);
-            ViewBag.Products = db.Products.Where(x => box.ProductCount.Keys.Contains(x.Id)).ToList();
-
-            return View(BoxesCart.GetInstance().Boxes.FirstOrDefault(x => x.Id == id));
+            return View(BoxesCart.GetInstance().GetBoxes().FirstOrDefault(x => x.Id == id));
         }
         [HttpGet]
         public ActionResult Create()
@@ -42,6 +39,18 @@ namespace MakeUpBoxesStore.Controllers
                 return View("Create", box);
             }
             return RedirectToAction("Index","Home");
+        }
+        [HttpPost]
+        public ActionResult AddProduct(int boxId, int productId, int productCount)
+        {
+            var box = BoxesCart.GetInstance().GetBoxes().FirstOrDefault(x => x.Id == boxId);
+            if (box != null)
+            {
+                box.ProductCount.Add(db.Products.FirstOrDefault(x=>x.Id== productId), productCount);
+            }
+
+            var categoryId = db.Products.FirstOrDefault(x => x.Id == productId).Categories.Select(x=>x.Id).First();
+            return RedirectToAction("Index", "Category", new { id = categoryId });
         }
     }
 }

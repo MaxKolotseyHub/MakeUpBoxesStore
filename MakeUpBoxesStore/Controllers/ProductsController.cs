@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MakeUpBoxesStore.Db;
 using MakeUpBoxesStore.Helpers;
+using MakeUpBoxesStore.Models;
 using MakeUpBoxesStore.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace MakeUpBoxesStore.Controllers
         // GET: Products
         public ActionResult Details(int id)
         {
+            ViewBag.Boxes = BoxesCart.GetInstance().GetBoxes();
             return View(mapper.Map<ProductDetailsViewModel>(db.Products.FirstOrDefault(x=>x.Id==id)));
         }
     }

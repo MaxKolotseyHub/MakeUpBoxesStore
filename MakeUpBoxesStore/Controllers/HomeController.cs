@@ -22,7 +22,7 @@ namespace MakeUpBoxesStore.Controllers
         public ActionResult GetNav()
         {
             ViewBag.Categories = db.Categories.ToList();
-            ViewBag.Boxes = BoxesCart.GetInstance().Boxes;
+            ViewBag.Boxes = BoxesCart.GetInstance().GetBoxes();
             return PartialView();
         }
     }

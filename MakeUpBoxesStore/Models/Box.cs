@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MakeUpBoxesStore.Models.DbEntities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,12 +11,12 @@ namespace MakeUpBoxesStore.Models
     {
         public Box()
         {
-            ProductCount = new Dictionary<int, int>();
+            ProductCount = new Dictionary<Product, int>();
         }
         public int Id { get; set; }
         [Display(Name="Название")]
         [Required(ErrorMessage ="Заполните поле")]
         public string Name { get; set; }
-        public Dictionary<int,int> ProductCount { get; set; }
+        public Dictionary<Product,int> ProductCount { get; set; }
     }
 }

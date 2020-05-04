@@ -24,10 +24,10 @@
                     <th>Количество</th>
                 </tr>
                 <tr>
-                    @foreach (var prod in ViewBag.Products as List<MakeUpBoxesStore.Models.DbEntities.Product>)
+                    @foreach (var prod in Model.ProductCount)
                     {
-                        <th>@prod.Title</th>
-                        <th>@</th>
+                        <th>@prod.Key.Title</th>
+                        <th>@prod.Value</th>
                     }
                 </tr>
             </table>

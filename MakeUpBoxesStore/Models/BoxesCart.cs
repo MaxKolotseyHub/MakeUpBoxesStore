@@ -19,7 +19,11 @@ namespace MakeUpBoxesStore.Models
         {
             Boxes = new List<Box>();
         }
-        public List<Box> Boxes { get; private set; }
+        private List<Box> Boxes;
+        public List<Box> GetBoxes()
+        {
+            return Boxes;
+        }
         public bool Add(Box box)
         {
             if (Boxes.FirstOrDefault(x => x.Name.Equals(box.Name)) != null)
