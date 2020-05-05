@@ -31,20 +31,23 @@ namespace MakeUpBoxesStore.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.Categories = db.Categories.ToList();
             return View();
         }
-        [HttpGet]
+        [HttpPost]
         public ActionResult Create(Product product)
         {
             if (!ModelState.IsValid)
             {
                 return View(product);
             }
-
+            product.Images = new List<Image>();
+            product.Producer = new Producer();
+            product.Categories = new List<Category>();
             db.Products.Add(product);
             db.SaveChanges();
 
-            return RedirectToAction("Index", "Adimn");
+            return RedirectToAction("Index");
         }
         public ActionResult Delete(int id)
         {
@@ -91,7 +94,7 @@ namespace MakeUpBoxesStore.Controllers
                     db.SaveChanges();
                 }
             }
-            return RedirectToAction("Edit",new { id = productId});
+            return RedirectToAction("Edit", new { id = productId });
         }
         public ActionResult AddToCategory(int categoryId, int productId)
         {
@@ -108,5 +111,32 @@ namespace MakeUpBoxesStore.Controllers
             }
             return RedirectToAction("Edit", new { id = productId });
         }
+        public ActionResult RemoveImage(int productId, int imageId)
+        {
+            var product = db.Products.FirstOrDefault(x => x.Id == productId);
+            if (product != null)
+            {
+                var image = product.Images.FirstOrDefault(x => x.Id == imageId);
+                if (image != null)
+                {
+                    db.Images.Remove(image);
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("Edit", new { id = productId });
+        }
+        [HttpPost]
+        public ActionResult AddImage(int productId, string url)
+        {
+            var product = db.Products.FirstOrDefault(x => x.Id == productId);
+            if (product != null)
+            {
+                product.Images.Add(new Image() { Url = url });
+
+                db.Entry(product).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Edit", new { id = productId });
+        }
     }
-}
+}   

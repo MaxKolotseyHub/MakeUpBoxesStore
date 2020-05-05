@@ -17,7 +17,7 @@ namespace MakeUpBoxesStore.Controllers
         }
         public ActionResult Index()
         {
-            return RedirectToAction("Index","Category", new { id=0});
+            return RedirectToAction("Selected","Category", new { id=0});
         }
         public ActionResult GetNav()
         {

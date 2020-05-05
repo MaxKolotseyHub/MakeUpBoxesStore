@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MakeUpBoxesStore.Models.DbEntities.Product>
+
+<link href="~/Content/myGrid.css" rel="stylesheet" />
+<div class="low-grid container">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <img src="@item.Images.First().Url" style="height:100px; max-width:150px;" />
+            <br />
+            <p class="text-center">@item.Title</p>
+            <p class="text-center">Цена: @item.Price BYN</p>
+            <hr/>
+            @Html.ActionLink("Подробнее", "Details", "Products", htmlAttributes: new { @class = "btn btn-outline-primary" }, routeValues: new { id = item.Id })
+
+        </div>
+    }
+</div>

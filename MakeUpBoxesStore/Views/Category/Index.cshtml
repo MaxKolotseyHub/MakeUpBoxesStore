@@ -1,17 +1,59 @@
-﻿@model IEnumerable<MakeUpBoxesStore.Models.DbEntities.Product>
+﻿@model IEnumerable<MakeUpBoxesStore.Models.DbEntities.Category>
 
-<link href="~/Content/myGrid.css" rel="stylesheet" />
-<div class="low-grid container">
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Список категорий</h2>
+
+<div class="container row justify-content-between">
+    <p>
+        @Html.ActionLink("Создать", "Create")
+    </p>
+    <div class="col-lg-4">
+        <input type="text" id="Search" placeholder="Поиск" class="form-control" />
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
     @foreach (var item in Model)
     {
-        <div class="card">
-            <img src="@item.Images.First().Url" style="height:100px; max-width:150px;" />
-            <br />
-            <p class="text-center">@item.Title</p>
-            <p class="text-center">Цена: @item.Price BYN</p>
-            <hr/>
-            @Html.ActionLink("Подробнее", "Details", "Products", htmlAttributes: new { @class = "btn btn-outline-primary" }, routeValues: new { id = item.Id })
-
-        </div>
+        <tr class="Search">
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+            </td>
+        </tr>
     }
-</div>
+
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $('#Search').keyup(function () {
+                console.log('keyup');
+                $('.Search').each(function () {
+                    let search = $('#Search').val().toLowerCase();
+                    if (!Contains($(this).text().toLowerCase(), search)) {
+                        $(this).hide();
+                    }
+                    else $(this).show();
+                })
+            });
+        });
+    </script>
+}

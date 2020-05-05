@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Администрирование</h2>
+<ul class="list-group">
+    <li class="list-group-item">
+        @Html.ActionLink("Управление категориями","Index","Category")
+    </li>
+    <li class="nav-link list-group-item">
+        @Html.ActionLink("Управление товарами", "Index", "Products")
+    </li>
+    <li class="nav-link list-group-item">
+        @Html.ActionLink("Управление заказами","Index","Category")
+    </li>
+</ul>
