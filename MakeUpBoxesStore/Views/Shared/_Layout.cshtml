@@ -15,8 +15,8 @@
             <div class="sidebar-header">
                 <h3>MakeupBoxes</h3>
             </div>
+                @Html.Partial("_LoginPartial")
             <ul class="list-unstyled components">
-                <p>Каталог</p>
                 @{Html.RenderAction("GetNav", "Home");}
             </ul>
         </nav>

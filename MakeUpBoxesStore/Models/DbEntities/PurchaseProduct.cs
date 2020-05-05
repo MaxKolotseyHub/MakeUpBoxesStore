@@ -6,14 +6,8 @@ using System.Web;
 
 namespace MakeUpBoxesStore.Models.DbEntities
 {
-    public class Product
+    public class PurchaseProduct
     {
-
-        public Product()
-        {
-            Images = new List<Image>();
-            Categories = new List<Category>();
-        }
         public int Id { get; set; }
         [Display(Name = "Название")]
         [Required]
@@ -27,10 +21,8 @@ namespace MakeUpBoxesStore.Models.DbEntities
         [Display(Name = "Описание")]
         [Required]
         public string Description { get; set; }
-        public int ProducerId { get; set; }
-        public virtual Producer Producer { get; set; }
-        [Display(Name = "Категории")]
-        public virtual List<Category> Categories { get; set; }
-        public virtual List<Image> Images { get; set; }
+        [Display(Name = "Производитель")]
+        [Required]
+        public string Producer { get; set; }
     }
 }

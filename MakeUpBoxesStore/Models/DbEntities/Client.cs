@@ -13,7 +13,6 @@ namespace MakeUpBoxesStore.Models.DbEntities
         [Required]
         public string Name { get; set; }
         [Display(Name = "Мобильный телефон")]
-        [RegularExpression(@"+375\d{9}",ErrorMessage ="Введите номер в формате +375XXXXXXXXX")]
         [Required]
         public string Phone { get; set; }
         [Display(Name = "Адрес")]

@@ -24,6 +24,14 @@ namespace MakeUpBoxesStore.Models
         {
             return Boxes;
         }
+        public void Delete(int id)
+        {
+            var box = Boxes.FirstOrDefault(x=>x.Id== id);
+            if(box != null)
+            {
+                Boxes.Remove(box);
+            }
+        }
         public bool Add(Box box)
         {
             if (Boxes.FirstOrDefault(x => x.Name.Equals(box.Name)) != null)

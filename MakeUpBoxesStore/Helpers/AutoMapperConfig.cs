@@ -20,6 +20,13 @@ namespace MakeUpBoxesStore.Helpers
                     cfg.CreateMap<Product, ProductDetailsViewModel>()
                     .ForMember("Images", opt => opt.MapFrom(c => c.Images.Select(x => x.Url).ToList()))
                     .ForMember("ProducerInfo", opt => opt.MapFrom(c => c.Producer.Title + ", " + c.Producer.Address));
+
+                    cfg.CreateMap<Product, PurchaseProduct>()
+                    .ForMember("Producer", opt=>opt.MapFrom(x=>x.Producer.Title + ", " + x.Producer.Address));
+                    
+                    cfg.CreateMap<Product, ProductListViewModel>()
+                    .ForMember("Producer", opt=>opt.MapFrom(x=>x.Producer.Title + ", " + x.Producer.Address));
+
                 });
                 mapper = new Mapper(config);
             }

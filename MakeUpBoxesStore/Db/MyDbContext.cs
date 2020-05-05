@@ -25,5 +25,7 @@ namespace MakeUpBoxesStore.Db
         public DbSet<Product> Products { get; set; }
         public DbSet<Client> Clients{ get; set; }
         public DbSet<Box> Boxes{ get; set; }
+        public DbSet<Purchase> Purchases { get; set; }
+        public DbSet<PurchaseProduct> PurchaseProducts { get; set; }
     }
 }

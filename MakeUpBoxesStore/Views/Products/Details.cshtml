@@ -88,52 +88,53 @@
                     </dd>
 
                 </dl>
-                @if (ViewBag.Boxes.Count == 0)
-                {
-                    <div class="col">
-                        <p class="lead">Чтобы купить товар необходимо</p>
-                        <p>@Html.ActionLink("Создать бокс", "Create", "Boxes", new { }, new { @class = "btn btn-primary" })</p>
-                    </div>
-                }
-                else
-                {
-                    <hr />
-                    <div>
-                        @if (ViewBag.Boxes.Count == 1)
-                        {
-                            <form action="/Boxes/AddProduct" method="post">
-                                <div class="form-group">
-                                    <p class="lead">Добавление товара в бокс  @ViewBag.Boxes[0].Name</p>
-                                    <p>Выберите количество</p>
-                                    <input type="number" max="@Model.Count" min="1" name="productCount" />
-                                    <input type="hidden" name="boxId" value="@ViewBag.Boxes[0].Id" />
-                                    <input type="hidden" value="@Model.Id" name="productId" />
-                                    <input type="submit" class="btn btn-outline-primary" value="Добавить" />
-                                </div>
-                            </form>
-                        }
-                        else
-                        {
-                            <form action="/Boxes/AddProduct" method="post">
-                                <div class="form-group">
-                                    <p class="lead">Добавление товара в бокс</p>
-                                    <p>Выберите бокс</p>
-                                    <select name="boxId" class="form-control">
-                                        @foreach (var box in ViewBag.Boxes as List<MakeUpBoxesStore.Models.Box>)
-                                        {
-                                            <option value="@box.Id">@box.Name</option>
-                                        }
-                                    </select>
-                                    <p>Выберите количество</p>
-                                    <input type="number" max="@Model.Count" min="1" name="productCount" />
-                                    <input type="hidden" value="@Model.Id" name="productId" />
-                                    <input type="submit" class="btn btn-outline-primary" value="Добавить" />
-                                </div>
-                            </form>
-
-                        }
-                    </div>
-                }
+                <div id="addToBoxPlaceHolder">
+                    @if (ViewBag.Boxes.Count == 0)
+                    {
+                        <div class="col">
+                            <p class="lead">Чтобы купить товар необходимо</p>
+                            <p>@Html.ActionLink("Создать бокс", "Create", "Boxes", new { }, new { @class = "btn btn-primary" })</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <hr />
+                        <div>
+                            @if (ViewBag.Boxes.Count == 1)
+                            {
+                                <form action="/Boxes/AddProduct" method="post" id="addToBoxForm">
+                                    <div class="form-group">
+                                        <p class="lead">Добавление товара в бокс  @ViewBag.Boxes[0].Name</p>
+                                        <p>Выберите количество</p>
+                                        <input type="number" max="@Model.Count" min="1" name="productCount" id="count" />
+                                        <input type="hidden" name="boxId" value="@ViewBag.Boxes[0].Id" id="boxId" />
+                                        <input type="hidden" value="@Model.Id" name="productId" id="productId" />
+                                        <input type="submit" class="btn btn-outline-primary" value="Добавить" />
+                                    </div>
+                                </form>
+                            }
+                            else
+                            {
+                                <form action="/Boxes/AddProduct" method="post" id="addToBoxForm">
+                                    <div class="form-group">
+                                        <p class="lead">Добавление товара в бокс</p>
+                                        <p>Выберите бокс</p>
+                                        <select name="boxId" class="form-control" id="boxId">
+                                            @foreach (var box in ViewBag.Boxes as List<MakeUpBoxesStore.Models.Box>)
+                                            {
+                                                <option value="@box.Id">@box.Name</option>
+                                            }
+                                        </select>
+                                        <p>Выберите количество</p>
+                                        <input type="number" max="@Model.Count" min="1" name="productCount" id="count" />
+                                        <input type="hidden" value="@Model.Id" name="productId" id="productId" />
+                                        <input type="submit" class="btn btn-outline-primary" value="Добавить" />
+                                    </div>
+                                </form>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
         </div>
     </div>
