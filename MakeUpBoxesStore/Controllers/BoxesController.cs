@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace MakeUpBoxesStore.Controllers
 {
+    [Authorize]
     public class BoxesController : Controller
     {
         private readonly MyDbContext db;

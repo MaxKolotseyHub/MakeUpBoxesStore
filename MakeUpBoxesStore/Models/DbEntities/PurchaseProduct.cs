@@ -24,5 +24,7 @@ namespace MakeUpBoxesStore.Models.DbEntities
         [Display(Name = "Производитель")]
         [Required]
         public string Producer { get; set; }
+        public int PurchaseId { get; set; }
+        public virtual Purchase Purchase { get; set; }
     }
 }

@@ -48,12 +48,12 @@ namespace MakeUpBoxesStore.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="Поле Email необходимо для заполнения")]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Пароль необходим для заполнения")]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
@@ -64,20 +64,19 @@ namespace MakeUpBoxesStore.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage ="Поле Email необходимо для заполнения")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Пароль необходим для заполнения")]
         [StringLength(100, ErrorMessage = "Пароль должен быть не менее 6 символов. Содержать минимум 1 цифру, по-одному символу в верхнем и нижнем регистре и один знак препинания", MinimumLength = 6)]
-        [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
 
-        [DataType(DataType.Password)]
+        [DataType(DataType.Password, ErrorMessage = "Пароль должен быть не менее 6 символов. Содержать минимум 1 цифру, по-одному символу в верхнем и нижнем регистре и один знак препинания")]
         [Display(Name = "Подтвердите пароль")]
-        [Compare("Пароль", ErrorMessage = "Пароли не совпадают.")]
+        [Compare("Password", ErrorMessage = "Пароли не совпадают.")]
         public string ConfirmPassword { get; set; }
     }
 
