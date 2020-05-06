@@ -50,7 +50,7 @@ namespace MakeUpBoxesStore.Controllers
             }
 
             var categoryId = db.Products.FirstOrDefault(x => x.Id == productId).Categories.Select(x=>x.Id).First();
-            return RedirectToAction("Index", "Category", new { id = categoryId });
+            return RedirectToAction("Selected", "Category", new { id = categoryId });
         }
     }
 }

@@ -23,7 +23,7 @@ namespace MakeUpBoxesStore.Controllers
         // GET: Purchases
         public ActionResult Index()
         {
-            return View();
+            return View(db.Purchases.ToList());
         }
         [HttpGet]
         public ActionResult Create(int id)
@@ -47,7 +47,7 @@ namespace MakeUpBoxesStore.Controllers
                         purchProd.Count = product.Value;
                         purchase.Products.Add(purchProd);
 
-                        var p = db.Products.FirstOrDefault(x=>x.Id == product.Key.Id);
+                        var p = db.Products.FirstOrDefault(x => x.Id == product.Key.Id);
                         p.Count -= product.Value;
                         db.Entry(p).State = System.Data.Entity.EntityState.Modified;
                     }
@@ -62,5 +62,42 @@ namespace MakeUpBoxesStore.Controllers
             else return View(client);
         }
 
+        public ActionResult Delete(int id)
+        {
+            var p = db.Purchases.FirstOrDefault(x => x.Id == id);
+            if (p != null)
+            {
+                db.Purchases.Remove(p);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var p = db.Purchases.FirstOrDefault(x => x.Id == id);
+
+            return View(p);
+        }
+        [HttpPost]
+        public ActionResult Client(Client client, int id)
+        {
+            db.Entry(client).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Edit", new { id = id });
+        }
+        [HttpPost]
+        public ActionResult Status(string state, int id)
+        {
+            var p = db.Purchases.FirstOrDefault(x => x.Id == id);
+            if (p != null)
+            {
+                p.State = state;
+                db.Entry(p).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Edit", new { id = id });
+        }
     }
 }

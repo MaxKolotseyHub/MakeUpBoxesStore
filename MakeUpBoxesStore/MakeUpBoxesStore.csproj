@@ -200,6 +200,7 @@
     <Compile Include="Models\DbEntities\PurchaseProduct.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\EditPurchaseViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductDetailsViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -378,6 +379,8 @@
     <Content Include="Views\Category\Create.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Purchases\Index.cshtml" />
+    <Content Include="Views\Purchases\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

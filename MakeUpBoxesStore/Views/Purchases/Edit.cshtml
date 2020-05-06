@@ -1,0 +1,90 @@
+﻿@model MakeUpBoxesStore.Models.DbEntities.Purchase
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Редактирование</h2>
+
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <p>Статус заказа</p>
+    <form action="/Purchases/Status" method="post">
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="hidden" value="@Model.Id" name="id"/>
+                <input type="text" value="@Model.State" name="state" class = "form-control"/>
+                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input type="submit" value="Сохранить" class="btn btn-primary" />
+    </form>
+
+    <hr />
+    <p>Информация о клиенте</p>
+    <form action="/Purchases/Client" method="post">
+
+        <input type="hidden" value="@Model.Id" name="id" />
+        <input type="hidden" value="@Model.Client.Id" name="Client.Id" />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Client.Name, htmlAttributes: new { @class = "control-label col" })
+            <div class="col-md-10">
+                <input type="text" value="@Model.Client.Name" name="Client.Name" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Client.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Client.Address, htmlAttributes: new { @class = "control-label col" })
+            <div class="col-md-10">
+                <input type="text" value="@Model.Client.Address" name="Client.Address" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Client.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Client.Phone, htmlAttributes: new { @class = "control-label col" })
+            <div class="col-md-10">
+                <input type="text" value="@Model.Client.Phone" name="Client.Phone" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Client.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input type="submit" value="Сохранить" class="btn btn-primary" />
+
+    </form>
+        <hr />
+    <p>Список товаров</p>
+        <table class="table">
+            <tr>
+                <th>
+                    Название
+                </th>
+                <th>
+                    Количество
+                </th>
+                <th>
+                    Цена
+                </th>
+            </tr>
+            @foreach (var product in Model.Products)
+            {
+                <tr class="Search">
+                    <td>
+                        @product.Title
+                    </td>
+                    <td>
+                        @product.Count
+                    </td>
+                    <td>
+                        @product.Price
+                    </td>
+                </tr>
+
+            }
+        </table>
+</div>
+<br/>
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>

@@ -27,6 +27,12 @@ namespace MakeUpBoxesStore.Helpers
                     cfg.CreateMap<Product, ProductListViewModel>()
                     .ForMember("Producer", opt=>opt.MapFrom(x=>x.Producer.Title + ", " + x.Producer.Address));
 
+                    cfg.CreateMap<Purchase, EditPurchaseViewModel>()
+                    .ForMember("ClientName", opt => opt.MapFrom(x => x.Client.Name))
+                    .ForMember("ClientAddress", opt => opt.MapFrom(x => x.Client.Address))
+                    .ForMember("ClientPhone", opt => opt.MapFrom(x => x.Client.Phone))
+                    .ForMember("Products", opt => opt.MapFrom(x => x.Products));
+
                 });
                 mapper = new Mapper(config);
             }

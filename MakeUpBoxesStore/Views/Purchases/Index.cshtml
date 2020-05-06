@@ -1,0 +1,70 @@
+﻿@model List<MakeUpBoxesStore.Models.DbEntities.Purchase>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container row justify-content-between">
+<h2>Заказы</h2>
+    <div class="col-lg-4">
+        <input type="text" id="Search" placeholder="Поиск" class="form-control" />
+    </div>
+</div>
+<br/>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>
+                Клиент
+            </th>
+            <th>
+                Количество товаров
+            </th>
+            <th>
+                Статус
+            </th>
+            <th>Действия</th>
+        </tr>
+        @foreach (var purchase in Model)
+        {
+            <tr class="Search">
+                <td>
+                    @purchase.Client.Name
+                </td>
+                <td>
+                    @purchase.Products.Count
+                </td>
+                <td>
+                    @purchase.State
+                </td>
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = purchase.Id }, new { @class = "" }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = purchase.Id }, new { @class = "" })
+                </td>
+            </tr>
+
+        }
+    </table>
+    @Html.ActionLink("Назад", "Index", "Admin", new { }, new { @class = "nav-link" })
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $('#Search').keyup(function () {
+                console.log('keyup');
+                $('.Search').each(function () {
+                    let search = $('#Search').val().toLowerCase();
+                    if (!Contains($(this).text().toLowerCase(), search)) {
+                        $(this).hide();
+                    }
+                    else $(this).show();
+                })
+            });
+        });
+    </script>
+}
