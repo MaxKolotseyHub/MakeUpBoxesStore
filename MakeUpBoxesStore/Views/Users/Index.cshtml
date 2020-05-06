@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MakeUpBoxesStore.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Список пользователей</h2>
+<div class="container row justify-content-between">
+    <p>
+        @Html.ActionLink("Новый пользователь", "Create")
+    </p>
+    <div class="col-lg-4">
+        <input type="text" id="Search" placeholder="Поиск" class="form-control" />
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="Search">
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $('#Search').keyup(function () {
+                console.log('keyup');
+                $('.Search').each(function () {
+                    let search = $('#Search').val().toLowerCase();
+                    if (!Contains($(this).text().toLowerCase(), search)) {
+                        $(this).hide();
+                    }
+                    else $(this).show();
+                })
+            });
+        });
+    </script>
+}

@@ -180,6 +180,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PurchasesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Db\AppDbInitializer.cs" />
     <Compile Include="Db\MyDbContext.cs" />
     <Compile Include="Db\MyDbContextInitializer.cs" />
@@ -381,6 +382,9 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Purchases\Index.cshtml" />
     <Content Include="Views\Purchases\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
