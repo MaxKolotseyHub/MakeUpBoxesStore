@@ -18,7 +18,7 @@ namespace MakeUpBoxesStore.Controllers
         }
         // GET: Boxes
         [HttpGet]
-        public ActionResult Index(int id)
+        public ActionResult Edit(int id)
         {
             return View(BoxesCart.GetInstance().GetBoxes().FirstOrDefault(x => x.Id == id));
         }
@@ -26,6 +26,35 @@ namespace MakeUpBoxesStore.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return View(BoxesCart.GetInstance().GetBoxes());
+        }
+        [HttpGet]
+        public ActionResult RemoveProduct(int id, int pid)
+        {
+            var box = BoxesCart.GetInstance().GetBoxes().FirstOrDefault(x=>x.Id==id);
+            if (box != null)
+            {
+                var prod = box.ProductCount.FirstOrDefault(x=>x.Key.Id == pid);
+                if (prod.Key != null)
+                {
+                    box.ProductCount.Remove(prod.Key);
+                }
+            }
+            return View("Edit", box);
+        }
+        [HttpGet]
+        public ActionResult DeleteBox(int id)
+        {
+            var box = BoxesCart.GetInstance().GetBoxes().FirstOrDefault(x=>x.Id==id);
+            if (box != null)
+            {
+                BoxesCart.GetInstance().Delete(box.Id);
+            }
+            return RedirectToAction("Index");
         }
         [HttpPost]
         public ActionResult Create(Box box)

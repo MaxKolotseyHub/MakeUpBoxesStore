@@ -4,17 +4,17 @@
 }
 
 <h2>Администрирование</h2>
-<ul class="list-group">
-    <li class="list-group-item">
+<div class="low-flex">
+    <div class="btn btn-primary">
         @Html.ActionLink("Управление категориями","Index","Category")
-    </li>
-    <li class="nav-link list-group-item">
+    </div>
+    <div class="btn btn-primary">
         @Html.ActionLink("Управление товарами", "Index", "Products")
-    </li>
-    <li class="nav-link list-group-item">
+    </div>
+    <div class="btn btn-primary">
         @Html.ActionLink("Управление заказами","Index","Purchases")
-    </li>
-    <li class="nav-link list-group-item">
+    </div>
+    <div class="btn btn-primary">
         @Html.ActionLink("Управление пользователями","Index","Users")
-    </li>
-</ul>
+    </div>
+</div>

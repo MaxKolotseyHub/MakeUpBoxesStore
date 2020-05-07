@@ -27,7 +27,7 @@
         @foreach (var box in ViewBag.Boxes as List<MakeUpBoxesStore.Models.Box>)
         {
             <li class="nav-item">
-                @Html.ActionLink(box.Name, "Index", "Boxes", routeValues: new { id = box.Id }, htmlAttributes: new { @class = "" })
+                @Html.ActionLink(box.Name, "Edit", "Boxes", routeValues: new { id = box.Id }, htmlAttributes: new { @class = "" })
             </li>
         }
     </ul>

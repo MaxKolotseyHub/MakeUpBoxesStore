@@ -370,7 +370,7 @@
     <Content Include="Views\Home\GetNav.cshtml" />
     <Content Include="Views\Category\Selected.cshtml" />
     <Content Include="Views\Boxes\Create.cshtml" />
-    <Content Include="Views\Boxes\Index.cshtml" />
+    <Content Include="Views\Boxes\Edit.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Purchases\Create.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
@@ -385,6 +385,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Boxes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
